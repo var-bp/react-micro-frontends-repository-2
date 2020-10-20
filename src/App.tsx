@@ -1,19 +1,19 @@
 import React from 'react';
+import loadable from '@loadable/component';
 import logo from './logo.svg';
-import { Container, Header, Image, Link } from './App.style';
+import { Container, Image, Link } from './App.style';
+
+// https://loadable-components.com/docs/prefetching/
+const DynamicImport = loadable(() => import('./DynamicImport'));
 
 const App = (): JSX.Element => {
   return (
     <Container>
-      <Header>
-        <Image src={logo} alt="logo" />
-        <p>
-          Repository 2. Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <Link href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </Link>
-      </Header>
+      <Image src={logo} alt="logo" />
+      <DynamicImport />
+      <Link href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
+        Learn React
+      </Link>
     </Container>
   );
 };

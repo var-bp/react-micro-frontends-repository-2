@@ -14,7 +14,7 @@ module.exports = {
     path: path.join(__dirname, '../build'),
     // webpack uses `publicPath` to determine where the app is being served from.
     // It requires a trailing slash, or the file assets will get an incorrect path.
-    publicPath: '/',
+    // publicPath: '/',
     // Prevents conflicts when multiple webpack runtimes (from different apps)
     // are used on the same page.
     jsonpFunction: `webpackJsonp${env.MICROFRONTEND_NAME}`,
@@ -103,7 +103,7 @@ module.exports = {
         ],
         options: {
           name: 'media/[name].[hash:8].[ext]',
-          postTransformPublicPath: (p) => `window['hostOf${env.MICROFRONTEND_NAME}'] + ${p}`,
+          postTransformPublicPath: (p) => `window['hostOf${env.MICROFRONTEND_NAME}'] + '/' + ${p}`,
         },
       },
       // Add an additional namespace to generated styles to prevent container and micro-frontends from conflicting

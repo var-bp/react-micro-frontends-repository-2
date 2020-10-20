@@ -4,15 +4,19 @@
 
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
+import { match } from 'react-router';
 import { Route, Router, BrowserRouter } from 'react-router-dom';
 import { History } from 'history';
 import App from './App';
 import GlobalStyle from './global-style';
 
+// https://webpack.js.org/configuration/output/#outputpublicpath
+__webpack_public_path__ = `${window[`hostOf${process.env.MICROFRONTEND_NAME}`]}/`;
+
 window[`render${process.env.MICROFRONTEND_NAME}`] = (
   containerId: string,
   history: History,
-  parentRouteMatch: { path: any },
+  parentRouteMatch: match,
 ) => {
   ReactDOM.render(
     <StrictMode>
@@ -26,7 +30,7 @@ window[`render${process.env.MICROFRONTEND_NAME}`] = (
           </Router>
         ) : (
           <BrowserRouter>
-            <Route path="/repository-2">
+            <Route path="/repository-1">
               <App />
             </Route>
           </BrowserRouter>
