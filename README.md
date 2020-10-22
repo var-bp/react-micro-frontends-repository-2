@@ -47,6 +47,9 @@ The primary goal of this project is to provide a stable foundation upon which to
   - axios
   - @loadable/component (enable code splitting)
 
+## Important note
+All your npm packages from `dependencies` must be the same version across all you react-micro-frontends repositories.
+
 ## Installation
 Create `.env` file on the root of the project.
 ```
